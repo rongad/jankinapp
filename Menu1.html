@@ -1,8 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <body>
-<h1> This is activity #1</h1>
+    <label id="op1"></label>
+    <label id="oper"></label>
+    <label id="op2"></label><br>
+    <select id="options">
+    </select><br>
+    <button onclick="checkAnswer();">Check Answer</button>
+    <label id="score"></label><br>
 </body>
+
+<script>
+    //generate first operand
+    var op1 = parseInt(Math.random() * 10 + 1);
+    var opEl1 = document.getElementById("op1");
+    opEl1.innerHTML = op1;
+
+    //generate second operand
+    var op2 = parseInt(Math.random() * 10 + 1);
+    var opEl2 = document.getElementById("op2");
+    opEl2.innerHTML = op2;
+
+    //generate operatior
+
+    var oper = parseInt(Math.random() * 4 + 1);
+    var symbol = "";
+    switch (oper) {
+        case 1: symbol = "+"; break;
+        case 2: symbol = "-"; break;
+        case 3: symbol = "*"; break;
+        case 4: symbol = "/"; break;
+    }
+
+    var operEl = document.getElementById("oper");
+    operEl.innerHTML = symbol;
+
+    var correctAns = 0;
+
+    switch (oper) {
+        case 1: { correctAns = op1 + op2; console.log(correctAns); break; }
+        case 2: { correctAns = op1 - op2; console.log(correctAns); break; }
+        case 3: { correctAns = op1 * op2; console.log(correctAns); break; }
+        case 4: { correctAns = op1 / op2; console.log(correctAns); break; }
+    }
+
+    var correctAnsPos = parseInt(Math.random() * 4);
+
+    var dum1 = parseInt(Math.random() * 10 + 1);
+    var dum2 = parseInt(Math.random() * 10 + 1);
+    var dum3 = parseInt(Math.random() * 10 + 1);
+
+    var optionList = [dum1, dum2, dum3];
+
+    optionList.splice(correctAnsPos, 0, correctAns);
+
+    console.log(optionList);
+    console.log(correctAnsPos);
+    console.log(correctAns);
+
+    var selectEl = document.getElementById("options");
+
+    for (var i = 0; i <= 3; i++) {
+        var opt = document.createElement('option');
+        opt.value = optionList[i];
+        opt.innerHTML = optionList[i];
+        selectEl.appendChild(opt);
+    }
+
+    function checkAnswer() {
+        alert("ok");
+        console.log(correctAns);
+    }
+
+
+</script>
+
 </html>
-
-

@@ -23,10 +23,19 @@ body {
   height: 500px; /* Can Be changed */
 }
 
+.CenterAnswer{
+  text-align: center;
+  position: relative;
+  top: 10%;
+  right: 8%;
+  justify-content: center;
+  size: 20cm;
+}
+
 .QuestionColumn {
   display: flex;
   float: left;
-  width: 83.33%;
+  width: 100%;
   padding: 10px;
   height: 500px; /* Can Be changed */
   justify-content: center;
@@ -46,6 +55,9 @@ body {
   padding: 5px;
   text-align: center;
 }
+
+
+
 
 
  img {

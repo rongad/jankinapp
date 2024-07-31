@@ -3,14 +3,21 @@
 <link rel="script" type="javascript" href="bootstrap/js/bootstrap.min.js">
 <link rel="stylesheet" type="text/css" href="Menu.css">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+
 <body>
-    <label id="op1"></label>
-    <label id="oper"></label>
-    <label id="op2"></label><br>
-    <select id="options">
-    </select><br>
-    <button onclick="checkAnswer();">Check Answer</button>
-    <label id="score"></label><br>
+    <div class="QuestionColumn">
+        <label id="op1"></label>
+        <label id="oper"></label>
+        <label id="op2"></label><br>
+        <select id="options">
+        </select><br>
+        <div class="CenterAnswer">
+            <button onclick="checkAnswer();" class="btn btn-primary">Check Answer</button>
+        </div>
+        <label id="score"></label><br>
+
+    </div>
+
 </body>
 
 <script>

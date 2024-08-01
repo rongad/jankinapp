@@ -17,6 +17,8 @@ body {
 /* Create three equal columns that floats next to each other */
 .MenuColumn {
   text-align:center;
+  border-style: solid;
+  border-width: 5px;
   float: left;
   width: 13.66%;
   padding: 10px;
@@ -34,8 +36,9 @@ body {
 
 .QuestionColumn {
   display: flex;
+  /* border: 10px; */
   float: left;
-  width: 100%;
+  width: 83.33%;
   padding: 10px;
   height: 500px; /* Can Be changed */
   justify-content: center;

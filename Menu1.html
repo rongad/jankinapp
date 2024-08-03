@@ -16,10 +16,16 @@
     </div>
     <div class="QuestionColumn text-center">
         <table>
+            <tr width="100%">
+                <td class="text-right display-4">Score: </td>
+                <td class="text-right display-4">
+                    <div id="score">0</div>
+                </td>
+            </tr>
             <tr>
-                <td class="text-center"><label id="op1" style='margin-left:50px' class="display-2"></label>
-                    <label id="oper" style='margin-left:50px' class="display-2"></label>
-                    <label id="op2" style='margin-left:50px' class="display-2"></label>
+                <td class="text-center"><label id="op1" style='margin-left:50px' class="display-1"></label>
+                    <label id="oper" style='margin-left:50px' class="display-1"></label>
+                    <label id="op2" style='margin-left:50px' class="display-1"></label>
                 </td>
             </tr>
             <tr>
@@ -42,16 +48,19 @@
 
     <script>
 
-        var selectedValue, correctAns = 0;
+        var correctAns = 0, totalScore = 0, totalQuestions = 0;
         nextQuestion();
 
 
         function checkAnswer() {
-            var selectedOption = document.querySelector('input[name="options"]:checked');
+            var selectedOption = document.querySelector('input[name="radioOptions"]:checked');
             if (selectedOption) {
                 var selectedValue = parseFloat(selectedOption.value);
                 if (selectedValue === correctAns) {
+                    totalScore++;
                     alert("Correct!");
+                    var score = document.getElementById("score");
+                    score.innerHTML = `${totalScore} / ${totalQuestions}`;
                 } else {
                     alert("Wrong! The correct answer is " + correctAns);
                 }
@@ -84,7 +93,6 @@
             var operEl = document.getElementById("oper");
             operEl.innerHTML = symbol;
 
-            var correctAns = 0;
             switch (oper) {
                 case 1: correctAns = op1 + op2; break;
                 case 2: correctAns = op1 - op2; break;
@@ -98,21 +106,19 @@
             var dum3 = parseInt(Math.random() * 10 + 1);
 
             var optionList = [dum1, dum2, dum3];
+            console.log(optionList);
             optionList.splice(correctAnsPos, 0, correctAns);
 
             var optionsDiv = document.getElementById("options");
-
-            optionsDiv.remove();
-            //optionsDiv.removeChild(optionsDiv.lastElementChild);
+            optionsDiv.innerHTML = '';
 
             for (var i = 0; i < optionList.length; i++) {
                 var label = document.createElement('label');
                 label.classList.add('radio-inline', 'mr-3');
-                label.innerHTML = `<input type="radio" name="radioOptions" id="radioOptions" value="${optionList[i]}" style="margin-left:50px"> ${optionList[i]}`;
+                label.innerHTML = `<input type="radio" name="radioOptions" id="radioOptions" value="${optionList[i]}" style="margin-left:50px; height:35px; width:35px; vertical-align: middle;"> ${optionList[i]}`;
                 optionsDiv.appendChild(label);
             }
-            //console.log(radioOptions.childElementCount);
-
+            totalQuestions++;
         }
     </script>
 </body>
